@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <title>會員升級</title>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</head>
+<body onload="checkLogin(); loadMembershipStatus();">
+  <nav>
+    <a href="dashboard.html">控制面板</a> |
+    <a href="user.html">使用者管理</a> |
+    <a href="whitelist.html">黑白名單</a> |
+    <a href="settings.html">系統設定</a> |
+    <a href="upgrade.html">會員升級</a> |
+    <a href="#" onclick="logout()">登出</a>
+  </nav>
+  <h1>升級為會員</h1>
+  <div id="membership-section">
+    <p id="membership-status"></p>
+    <button onclick="upgradeMembership()">升級會員（2.99 美金）</button>
+  </div>
+</body>
+</html>
