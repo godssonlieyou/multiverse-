@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>使用者管理</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="stylesheet" href="https://godssonlieyou.github.io/multiverse-/style.css">
 </head>
 <body>
   <header>
     <h1>Multiverse</h1>
     <nav>
       <a href="dashboard.html">控制面板</a>
-      <a href="user.html">使用者管理</a>
+      <a href="user.html" class="active">使用者管理</a>
       <a href="whitelist.html">黑白名單</a>
       <a href="settings.html">伺服器設定</a>
       <a href="upgrade.html">會員升級</a>
@@ -22,15 +25,14 @@
     <h2>使用者帳號管理</h2>
     <form onsubmit="addUser(event)">
       <label>新增使用者帳號
-        <input type="text" id="username" placeholder="使用者名稱" required/>
+        <input type="text" id="username" placeholder="輸入使用者名稱" required>
       </label>
-      <button class="button">新增</button>
+      <button type="submit" class="button">新增</button>
     </form>
     <div class="card">
       <h3>現有帳號</h3>
       <ul id="user-list"></ul>
     </div>
-    <a href="index.html" class="back-home">← 回到首頁</a>
   </main>
   <script>
     function addUser(e) {
