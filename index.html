@@ -1,80 +1,25 @@
-<!-- Multiverse Landing Page -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multiverse - Free Game Servers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #1e1e2f;
-      color: #fff;
-    }
-    header {
-      background-color: #2a2a40;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      font-size: 1.5rem;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 1.5rem;
-      font-weight: bold;
-    }
-    .hero {
-      text-align: center;
-      padding: 5rem 2rem;
-      background-image: linear-gradient(to right, #23233d, #1e1e2f);
-    }
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .hero button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      background-color: #4f8cff;
-      border: none;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      background-color: #2a2a40;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multiverse - Home</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Multiverse</h1>
     <nav>
-      <a href="login.html">Login</a>
+      <a href="dashboard.html">控制面板</a>
+      <a href="settings.html">伺服器設定</a>
+      <a href="login.html">登入/註冊</a>
     </nav>
   </header>
-
-  <section class="hero">
-    <h2>Create Your Own Multiplayer Server</h2>
-    <p>Free servers for any sandbox or multiplayer game. No limits, no fees.</p>
-    <button onclick="location.href='dashboard.html'">Get Started</button>
-  </section>
-
-  <footer>
-    &copy; 2025 Multiverse. Not affiliated with Mojang or Microsoft.
-  </footer>
+  <main class="container">
+    <h2>創建你的沙盒伺服器世界</h2>
+    <p>支援各種多人遊戲伺服器，一鍵啟用，無需費用。</p>
+    <a href="login.html" class="button">立即開始</a>
+  </main>
 </body>
 </html>

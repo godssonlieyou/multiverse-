@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>伺服器設定</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <main class="container">
+    <h2>伺服器設定</h2>
+    <form>
+      <label>人數上限
+        <input type="number" min="1" max="100" value="10"/>
+      </label>
+      <label>模組功能
+        <select>
+          <option>啟用</option>
+          <option>停用</option>
+        </select>
+      </label>
+      <label>插件功能
+        <select>
+          <option>啟用</option>
+          <option>停用</option>
+        </select>
+      </label>
+      <label>伺服器備份
+        <button type="button" class="button secondary">建立備份</button>
+      </label>
+      <button type="submit" class="button">儲存設定</button>
+    </form>
+  </main>
+</body>
+</html>
