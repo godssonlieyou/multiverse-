@@ -29,15 +29,23 @@
       <h3>現有帳號</h3>
       <ul id="user-list"></ul>
     </div>
+    <a href="index.html" class="back-home">← 回到首頁</a>
   </main>
   <script>
     function addUser(e) {
       e.preventDefault();
       const name = document.getElementById('username').value;
-      const users = JSON.parse(localStorage.getItem("users") || "[]");
+      let users = JSON.parse(localStorage.getItem("users") || "[]");
       users.push(name);
       localStorage.setItem("users", JSON.stringify(users));
       document.getElementById('username').value = "";
+      loadUsers();
+    }
+
+    function deleteUser(index) {
+      let users = JSON.parse(localStorage.getItem("users") || "[]");
+      users.splice(index, 1);
+      localStorage.setItem("users", JSON.stringify(users));
       loadUsers();
     }
 
@@ -45,9 +53,9 @@
       const users = JSON.parse(localStorage.getItem("users") || "[]");
       const list = document.getElementById("user-list");
       list.innerHTML = "";
-      users.forEach(user => {
+      users.forEach((user, index) => {
         const li = document.createElement("li");
-        li.textContent = user;
+        li.innerHTML = `${user} <button onclick="deleteUser(${index})">刪除</button>`;
         list.appendChild(li);
       });
     }

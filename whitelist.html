@@ -39,6 +39,7 @@
       <h3>黑名單</h3>
       <ul id="blacklist"></ul>
     </div>
+    <a href="index.html" class="back-home">← 回到首頁</a>
   </main>
   <script>
     function addEntry(e) {
@@ -53,14 +54,22 @@
       loadLists();
     }
 
+    function deleteEntry(type, index) {
+      const key = type === "white" ? "whitelist" : "blacklist";
+      const list = JSON.parse(localStorage.getItem(key) || "[]");
+      list.splice(index, 1);
+      localStorage.setItem(key, JSON.stringify(list));
+      loadLists();
+    }
+
     function loadLists() {
       ["whitelist", "blacklist"].forEach(type => {
         const list = JSON.parse(localStorage.getItem(type) || "[]");
         const ul = document.getElementById(type);
         ul.innerHTML = "";
-        list.forEach(name => {
+        list.forEach((name, index) => {
           const li = document.createElement("li");
-          li.textContent = name;
+          li.innerHTML = `${name} <button onclick="deleteEntry('${type === "whitelist" ? "white" : "black"}', ${index})">刪除</button>`;
           ul.appendChild(li);
         });
       });
