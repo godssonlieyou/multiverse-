@@ -1,0 +1,108 @@
+<!-- Multiverse Control Panel -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multiverse Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #1e1e2f;
+      color: #fff;
+      display: flex;
+    }
+    .sidebar {
+      width: 200px;
+      background-color: #2a2a40;
+      padding: 2rem 1rem;
+      height: 100vh;
+    }
+    .sidebar h2 {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .sidebar a {
+      display: block;
+      margin-bottom: 1rem;
+      color: white;
+      text-decoration: none;
+    }
+    .main {
+      flex: 1;
+      padding: 2rem;
+    }
+    .card {
+      background-color: #29293f;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    .status {
+      margin: 1rem 0;
+      font-weight: bold;
+      color: #4f8cff;
+    }
+    .log {
+      background-color: #1a1a2a;
+      padding: 1rem;
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      height: 150px;
+      overflow-y: scroll;
+    }
+    input, select, button {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    button {
+      background-color: #4f8cff;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Multiverse</h2>
+    <a href="#">Servers</a>
+    <a href="#">Settings</a>
+    <a href="index.html">Logout</a>
+  </div>
+  <div class="main">
+    <div class="card">
+      <h3>Server Control</h3>
+      <p>Status: <span class="status">Offline</span></p>
+      <button>Start Server</button>
+      <button>Stop Server</button>
+    </div>
+
+    <div class="card">
+      <h3>Server Info</h3>
+      <p><strong>IP:</strong> sandbox.multiverse.gg</p>
+      <p><strong>Max Players:</strong></p>
+      <input type="number" value="10">
+      <p><strong>World Name:</strong></p>
+      <input type="text" value="MyWorld">
+    </div>
+
+    <div class="card">
+      <h3>Server Log</h3>
+      <div class="log">
+        [12:00:00] Server created<br>
+        [12:01:00] Waiting for players...<br>
+        [12:02:00] ...<br>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
