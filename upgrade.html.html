@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>會員升級</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</head>
+<body onload="checkLogin(); loadMembershipStatus();">
+  <header>
+    <h1>Multiverse</h1>
+    <nav>
+      <a href="dashboard.html">控制面板</a>
+      <a href="user.html">使用者管理</a>
+      <a href="whitelist.html">黑白名單</a>
+      <a href="settings.html">系統設定</a>
+      <a href="upgrade.html">會員升級</a>
+      <a href="#" onclick="logout()">登出</a>
+    </nav>
+  </header>
+  <main class="container">
+    <h2>升級為會員</h2>
+    <div class="card">
+      <p id="membership-status">❌ 你目前不是會員。</p>
+      <button class="button" onclick="upgradeMembership()">升級會員（2.99 美金）</button>
+      <button class="button secondary" onclick="cancelMembership()" id="cancel-button" style="display: none;">停止訂閱</button>
+    </div>
+  </main>
+  <script>
+    // 新增取消訂閱功能
+    function cancelMembership() {
+      if (confirm("確定要取消會員訂閱嗎？")) {
+        localStorage.setItem("membership", "basic");
+        alert("已取消訂閱！");
+        loadMembershipStatus();
+      }
+    }
+
+    // 強化狀態檢查
+    function loadMembershipStatus() {
+      const isPremium = localStorage.getItem("membership") === "premium";
+      const statusEl = document.getElementById("membership-status");
+      const cancelBtn = document.getElementById("cancel-button");
+
+      if (isPremium) {
+        statusEl.textContent = "✅ 你是會員。";
+        cancelBtn.style.display = "block";
+      } else {
+        statusEl.textContent = "❌ 你目前不是會員。";
+        cancelBtn.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
