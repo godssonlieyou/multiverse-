@@ -27,12 +27,21 @@
       <button type="submit" class="button">登入</button>
       <p>還沒有帳號？ <a href="#">點我註冊</a></p>
     </form>
+    <!-- 新增模擬登入按鈕 -->
+    <button 
+      class="button" 
+      style="margin-top: 1em;"
+      onclick="localStorage.setItem('loggedIn', 'true'); window.location.href='dashboard.html'"
+    >
+      模擬登入（直接進入控制面板）
+    </button>
   </main>
   <script>
     function login(e) {
       e.preventDefault();
       const email = document.getElementById('email').value;
       alert(`歡迎登入，${email}！`);
+      localStorage.setItem("loggedIn", "true");
       window.location.href = "dashboard.html";
     }
   </script>
