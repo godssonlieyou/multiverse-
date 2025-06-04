@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,29 +7,73 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+  <header>
+    <h1>Multiverse</h1>
+    <nav>
+      <a href="dashboard.html">控制面板</a>
+      <a href="settings.html">伺服器設定</a>
+      <a href="login.html">登入/註冊</a>
+    </nav>
+  </header>
   <main class="container">
     <h2>伺服器設定</h2>
-    <form>
+    <form onsubmit="saveSettings(event)">
+      <label>伺服器名稱
+        <input type="text" id="server-name" placeholder="輸入伺服器名稱"/>
+      </label>
       <label>人數上限
-        <input type="number" min="1" max="100" value="10"/>
+        <input type="number" id="max-players" min="1" max="100" value="10"/>
       </label>
       <label>模組功能
-        <select>
+        <select id="mod">
           <option>啟用</option>
           <option>停用</option>
         </select>
       </label>
       <label>插件功能
-        <select>
+        <select id="plugin">
+          <option>啟用</option>
+          <option>停用</option>
+        </select>
+      </label>
+      <label>世界類型
+        <select id="world-type">
+          <option>預設</option>
+          <option>無限平地</option>
+          <option>放大化</option>
+          <option>自訂</option>
+        </select>
+      </label>
+      <label>白名單模式
+        <select id="whitelist">
           <option>啟用</option>
           <option>停用</option>
         </select>
       </label>
       <label>伺服器備份
-        <button type="button" class="button secondary">建立備份</button>
+        <button type="button" class="button secondary" onclick="backupServer()">建立備份</button>
       </label>
       <button type="submit" class="button">儲存設定</button>
     </form>
   </main>
+  <script>
+    function saveSettings(e) {
+      e.preventDefault();
+      const settings = {
+        name: document.getElementById('server-name').value,
+        maxPlayers: document.getElementById('max-players').value,
+        mod: document.getElementById('mod').value,
+        plugin: document.getElementById('plugin').value,
+        worldType: document.getElementById('world-type').value,
+        whitelist: document.getElementById('whitelist').value
+      };
+      localStorage.setItem("serverSettings", JSON.stringify(settings));
+      alert("設定已儲存！");
+    }
+
+    function backupServer() {
+      alert("已建立備份（模擬）！");
+    }
+  </script>
 </body>
 </html>

@@ -1,20 +1,48 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>控制面板</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header>
+    <h1>Multiverse</h1>
+    <nav>
+      <a href="dashboard.html">控制面板</a>
+      <a href="settings.html">伺服器設定</a>
+      <a href="login.html">登入/註冊</a>
+    </nav>
+  </header>
   <main class="container">
     <h2>伺服器控制面板</h2>
     <div class="card">
-      <p>伺服器狀態：<strong>已關閉</strong></p>
-      <button class="button">啟動伺服器</button>
+      <h3>伺服器狀態：<span id="server-status">離線</span></h3>
+      <button class="button" onclick="startServer()">啟動伺服器</button>
+      <button class="button secondary" onclick="stopServer()">關閉伺服器</button>
     </div>
-    <a href="settings.html" class="button secondary">伺服器設定</a>
+    <div class="card">
+      <h3>即時主機資訊</h3>
+      <p>IP 位址：<span id="server-ip">尚未啟動</span></p>
+      <p>玩家連線：<span id="player-count">0</span>/10</p>
+    </div>
   </main>
+  <script>
+    function startServer() {
+      document.getElementById('server-status').innerText = '啟動中...';
+      setTimeout(() => {
+        document.getElementById('server-status').innerText = '線上';
+        document.getElementById('server-ip').innerText = '123.456.789.0';
+        document.getElementById('player-count').innerText = '2';
+      }, 2000);
+    }
+
+    function stopServer() {
+      document.getElementById('server-status').innerText = '離線';
+      document.getElementById('server-ip').innerText = '尚未啟動';
+      document.getElementById('player-count').innerText = '0';
+    }
+  </script>
 </body>
 </html>

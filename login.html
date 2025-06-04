@@ -1,20 +1,40 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>登入 / 註冊</title>
+  <title>登入/註冊</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+  <header>
+    <h1>Multiverse</h1>
+    <nav>
+      <a href="dashboard.html">控制面板</a>
+      <a href="settings.html">伺服器設定</a>
+      <a href="login.html">登入/註冊</a>
+    </nav>
+  </header>
   <main class="container">
-    <h2>登入 / 註冊</h2>
-    <form>
-      <input type="text" placeholder="使用者名稱" required/>
-      <input type="password" placeholder="密碼" required/>
+    <h2>登入帳號</h2>
+    <form onsubmit="login(event)">
+      <label>Email
+        <input type="email" id="email" required/>
+      </label>
+      <label>密碼
+        <input type="password" id="password" required/>
+      </label>
       <button type="submit" class="button">登入</button>
+      <p>還沒有帳號？ <a href="#">點我註冊</a></p>
     </form>
   </main>
+  <script>
+    function login(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      alert(`歡迎登入，${email}！`);
+      window.location.href = "dashboard.html";
+    }
+  </script>
 </body>
 </html>
