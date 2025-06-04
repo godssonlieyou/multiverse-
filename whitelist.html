@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>名單管理</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Multiverse</h1>
+    <nav>
+      <a href="dashboard.html">控制面板</a>
+      <a href="settings.html">伺服器設定</a>
+      <a href="user.html">使用者管理</a>
+      <a href="whitelist.html">名單管理</a>
+      <a href="login.html">登入/註冊</a>
+    </nav>
+  </header>
+  <main class="container">
+    <h2>白名單 / 黑名單 管理</h2>
+    <form onsubmit="addEntry(event)">
+      <label>使用者名稱
+        <input type="text" id="entry-name" required/>
+      </label>
+      <label>選擇類別
+        <select id="entry-type">
+          <option value="white">白名單</option>
+          <option value="black">黑名單</option>
+        </select>
+      </label>
+      <button class="button">加入名單</button>
+    </form>
+    <div class="card">
+      <h3>白名單</h3>
+      <ul id="whitelist"></ul>
+    </div>
+    <div class="card">
+      <h3>黑名單</h3>
+      <ul id="blacklist"></ul>
+    </div>
+  </main>
+  <script>
+    function addEntry(e) {
+      e.preventDefault();
+      const name = document.getElementById("entry-name").value;
+      const type = document.getElementById("entry-type").value;
+      const key = type === "white" ? "whitelist" : "blacklist";
+      const list = JSON.parse(localStorage.getItem(key) || "[]");
+      list.push(name);
+      localStorage.setItem(key, JSON.stringify(list));
+      document.getElementById("entry-name").value = "";
+      loadLists();
+    }
+
+    function loadLists() {
+      ["whitelist", "blacklist"].forEach(type => {
+        const list = JSON.parse(localStorage.getItem(type) || "[]");
+        const ul = document.getElementById(type);
+        ul.innerHTML = "";
+        list.forEach(name => {
+          const li = document.createElement("li");
+          li.textContent = name;
+          ul.appendChild(li);
+        });
+      });
+    }
+
+    window.onload = loadLists;
+  </script>
+</body>
+</html>
